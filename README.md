@@ -29,7 +29,44 @@ Bu mimaride API Gateway HTTP isteklerini karşılar, Lambda fonksiyonunu tetikle
 ## 🌐 API Bilgileri
 
 https://6jzrfifk5l.execute-api.eu-central-1.amazonaws.com   
-<img width="1470" height="956" alt="Ekran Resmi 2025-10-22 14 30 11" src="https://github.com/user-attachments/assets/454f71ec-69e4-4986-b2cd-078aad69ac76" />
 
-<img width="1470" height="956" alt="Ekran Resmi 2025-10-22 14 29 54" src="https://github.com/user-attachments/assets/f85a79c4-e908-428d-84ae-24f8b8571e03" />
+---
+
+## 🚀 Kurulum ve Çalıştırma (Local + AWS)
+
+Bu projeyi kendi ortamınızda çalıştırmak için aşağıdaki adımları izleyebilirsiniz.
+
+### ✅ Gereksinimler
+- AWS hesabı
+- AWS CLI kurulu olmalı (`aws configure` yapılmış olmalı)
+- AWS SAM CLI kurulu olmalı
+- Python 3.10 veya üzeri
+- Git
+
+---
+
+### 🔽 1. Depoyu Klonlayın
+```bash
+git clone https://github.com/<kullanici-adin>/serverless-hello-square.git
+cd serverless-hello-square
+
+## Sanal Ortam Oluşturun ve Bağımlılıkları Kurun
+python3 -m venv .venv
+source .venv/bin/activate  # Windows için: .venv\Scripts\activate
+pip install -r requirements.txt
+
+## AWS Kimlik Bilgilerini Tanımlayın
+aws configure
+
+##Projeyi Build Edin
+sam build
+
+##AWS Üzerine Deploy Edin
+sam deploy \
+  --stack-name hello-square-stack \
+  --resolve-s3 \
+  --capabilities CAPABILITY_IAM \
+  --region eu-central-1 \
+  --confirm-changeset
+
 
