@@ -1,0 +1,12 @@
+{
+  "version": "2.0",
+  "routeKey": "GET /hello",
+  "rawPath": "/hello",
+  "rawQueryString": "name=Ali",
+  "headers": {},
+  "queryStringParameters": {
+    "name": "Ali"
+  },
+  "requestContext": {},
+  "isBase64Encoded": false
+}

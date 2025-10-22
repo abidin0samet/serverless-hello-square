@@ -1,0 +1,48 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: "hello-square: AWS SAM ile Lambda + HTTP API örneği"
+
+Globals:
+  Function:
+    Runtime: python3.11
+    Timeout: 10
+    MemorySize: 128
+
+Resources:
+  HttpApi:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      CorsConfiguration:
+        AllowMethods:
+          - GET
+        AllowOrigins:
+          - '*'
+        AllowHeaders:
+          - '*'
+
+  HelloSquareFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: hello-square-Function
+      CodeUri: src/
+      Handler: hello_square.handler
+      Policies:
+        - AWSLambdaBasicExecutionRole
+      Events:
+        Hello:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref HttpApi
+            Path: /hello
+            Method: GET
+        Square:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref HttpApi
+            Path: /square
+            Method: GET
+
+Outputs:
+  HttpApiUrl:
+    Description: "HTTP API Base URL"
+    Value: !Sub "https://${HttpApi}.execute-api.${AWS::Region}.amazonaws.com"
