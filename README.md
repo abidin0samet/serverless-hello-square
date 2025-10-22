@@ -25,6 +25,9 @@ Bu mimaride API Gateway HTTP isteklerini karşılar, Lambda fonksiyonunu tetikle
 | Yetkilendirme | IAM Role (Least Privilege) |
 
 ---
+<img width="1470" height="956" alt="Ekran Resmi 2025-10-22 14 29 54" src="https://github.com/user-attachments/assets/12619a1f-c388-4393-a5f3-ec34ed37742c" />
+
+<img width="1470" height="956" alt="Ekran Resmi 2025-10-22 14 30 11" src="https://github.com/user-attachments/assets/352b57d1-fd90-4658-a7f6-f047a367b62c" />
 
 ## 🌐 API Bilgileri
 
